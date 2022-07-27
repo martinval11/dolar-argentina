@@ -14,9 +14,9 @@ const OpenedMenu = () => {
 			<dialog className='dialog' open onClick={() => closeDialogDisplay()}>
 				<article onClick={() => closeDialog()}>
 					<header id='dialogHeader'>
-						<a href='#' onClick={() => closeDialog()}>
+						<button id='closeBtn' onClick={() => closeDialog()}>
 							<i className='bi bi-x-lg'></i>
-						</a>
+						</button>
 						<span id="title">Menu</span>
 					</header>
 					<Link to='/' onClick={() => closeDialog()}>

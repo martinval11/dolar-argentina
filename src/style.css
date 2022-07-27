@@ -113,6 +113,14 @@ dialog {
 	display: none;
 }
 
+#closeBtn {
+	padding: 10px 10px 10px 10px;
+  margin-right: -10px;
+  margin-top: -9px;
+  float: right;
+  color: #fff;
+  width: auto;
+}
 dialog article {
 	min-width: 350px;
 }
