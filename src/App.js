@@ -12,7 +12,6 @@ const App = () => {
 		const res = await axios.get(
 			'https://www.dolarsi.com/api/api.php?type=valoresprincipales'
 		);
-		console.log(res.data)
 
 		const addItem = (item, type, name) => {
 			let converDataToNumber = res.data[item]['casa'][type];
