@@ -163,7 +163,7 @@ const App = () => {
 							<SendData item='dolarTuristaCompra' />
 						</td>
 						<td>
-							<SendData item='dolarTuristaVenta' />
+							$<SendData item='dolarTuristaVenta' />
 						</td>
 						<td>
 							<SendDataVariation item='dolarTuristaVariacion' />
