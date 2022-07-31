@@ -81,13 +81,23 @@ const App = () => {
 
 	const updateList = async () => {
 		const updateList = document.querySelector('#updateList');
+
+		if (updateList.getAttribute('data-tooltip')) {
+			updateList.removeAttribute('data-tooltip');
+		}
+
 		updateList.setAttribute('aria-busy', 'true');
-		updateList.innerText = 'Actualizando...';
+		updateList.innerText = 'Actualizando Precios...';
 		
 		await getData();
 		
 		updateList.setAttribute('aria-busy', 'false');
-		updateList.innerText = 'Actualizar';
+		updateList.innerText = 'Actualizar Precios';
+		updateList.setAttribute('data-tooltip', 'Los Precios han sido actualizados');
+
+		setTimeout(() => {
+			updateList.removeAttribute('data-tooltip');
+		}, 3500);
 	}
 
 	return (
@@ -95,7 +105,7 @@ const App = () => {
 			<br />
 			<main className='container'>
 				<button id='updateList' onClick={() => updateList()}>
-					Actualizar
+					Actualizar Precios
 				</button>
 			</main>
 

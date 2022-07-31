@@ -8,6 +8,7 @@
 	--iconsHover: #B4C6D6;
 	--footerBg: #228b4a;
 	--primaryFg: #eaeaea;
+	--greenDollarHover: #27da5c;
 }
 
 body {
@@ -23,7 +24,7 @@ body {
 	position: relative;
 	background: var(--navBg);
 	background-size: cover;
-	border-radius: 0px 0px 50px 50px;
+	border-radius: 0px 0px 45px 45px;
 }
 
 .img-bg {
@@ -31,6 +32,8 @@ body {
   position: absolute;
   left: 0;
   top: 0;
+	object-fit: cover;
+	background-size: cover;
   width: 100%;
   height: auto;
 }
@@ -40,7 +43,7 @@ h2 {
 }
 
 nav {
-	height: 150px;
+	height: 125px;
 	position: relative;
 }
 
@@ -97,6 +100,10 @@ tbody tr:hover th, tbody tr:hover td {
 	color: var(--neutralColor);
 }
 
+tbody tr:hover #green {
+	color: var(--greenDollarHover);
+}
+
 footer {
 	padding: 20px;
 	background: var(--footerBg);
@@ -107,6 +114,7 @@ footer {
 
 footer a {
 	color: var(--primaryFg);
+	font-weight: 600;
 }
 
 dialog {
@@ -124,12 +132,12 @@ dialog {
 	border: none;
 }
 
-dialog article {
-	min-width: 350px;
-}
-
 #title {
 	color: var(--headerFgColor);
+}
+
+dialog article {
+	min-width: 350px;
 }
 
 dialog article a {
@@ -139,10 +147,9 @@ dialog article a {
 
 dialog article a:hover {
 	background: var(--primary-hover);
-	color: var(--primaryFg);
+	color: var(--h1-color);
 	text-decoration: none;
 }
-
 
 dialog article header {
 	text-align: justify;
@@ -175,17 +182,43 @@ dialog article header a {
 	--iconsHover: #eaeaea;
 	--h1-color: #fff;
 	--primary: #228b4a;
-	---primary-focus: rgba(16, 193, 54, 0.125);
+	--primary-focus: rgba(16, 193, 54, 0.125);
 }
 
 :root:not([data-theme=light]), [data-theme=dark] {
 	--footerBg: #141E26;
 	--primaryFg: #1095C1;
+	--greenDollarHover: #00ff4c;
+	--table-row-stripped-background-color: #16212b;
 }
 
-@media screen and (max-height: 520px) {
+@media screen and (max-height: 577px) {
 	footer {
-		display: none;
+		bottom: -55px;
+	}
+}
+
+@media screen and (max-height: 545px) {
+	footer {
+		bottom: -100px;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	th {
+		padding: calc(var(--spacing)/ 2) 10px;
+	}
+}
+
+@media screen and (max-height: 525px) {
+	footer {
+		bottom: -150px;
+	}
+}
+
+@media screen and (max-height: 490px) {
+	footer {
+		bottom: -180px;
 	}
 }
 

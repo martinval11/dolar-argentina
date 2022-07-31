@@ -3,7 +3,7 @@ const Footer = (props) => {
 		<>
 			<footer style={{position: props.position}}>
 				<small>
-					Todos los datos son extraidos de la API de la página oficial de{' '}
+					Todos los datos son extraidos de la API oficial de{' '}
 					<a href="https://www.dolarsi.com/" target="_blank" rel="noopener noreferrer">DolarSI</a>
 				</small>
 			</footer>

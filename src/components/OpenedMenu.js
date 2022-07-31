@@ -27,15 +27,6 @@ const OpenedMenu = () => {
 					<Link to='/conversor' onClick={() => closeDialog()}>
 						Conversor de Divisas
 					</Link>
-					<br />
-					<br />
-					<a
-						href='https://github.com/martinval11/'
-						target='_blank'
-						rel='noopener noreferrer'
-						onClick={() => closeDialog()}>
-						GitHub
-					</a>
 				</article>
 			</dialog>
 		</>
