@@ -121,15 +121,34 @@ const App = () => {
 		);
 	};
 
+	const DollarRowNoPurchase = (props) => {
+		return (
+			<>
+				<tr>
+					<th scope='row'>{props.name}</th>
+					<td>
+						<SendData item={props.purchase} />
+					</td>
+					<td>
+						$<SendData item={props.sale} />
+					</td>
+					<td>
+						<SendDataVariation item={props.variation} />
+					</td>
+				</tr>
+			</>
+		);
+	};
+
 	useEffect(() => {
 		if (localStorage.getItem('dolarBlueCompra') !== null) {
 			document.querySelector('#loading').style.display = 'none';
 		} else {
-			async function g() {
+			async function tryGetData() {
 				await getData()
 				document.querySelector('#loading').style.display = 'none'				
 			}
-			g()
+			tryGetData()
 		}
 	}, []);
 
@@ -178,7 +197,7 @@ const App = () => {
 						sale='dolarBolsaVenta'
 						variation='dolarBolsaVariacion'
 					/>
-					<DollarRow
+					<DollarRowNoPurchase
 						name='Dólar Turista'
 						purchase='dolarTuristaCompra'
 						sale='dolarTuristaVenta'
