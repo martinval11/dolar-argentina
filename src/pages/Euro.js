@@ -56,7 +56,7 @@ const Euro = () => {
 				let convertDataToNumber = dataPurchase.replaceAll(',', '.');
 				let dataPurchaseConverted = parseFloat(convertDataToNumber);
 
-				let convertSaleDataToNumber = dataPurchase.replaceAll(',', '.');
+				let convertSaleDataToNumber = dataSale.replaceAll(',', '.');
 				let dataSaleConverted = parseFloat(convertSaleDataToNumber);
 
 				return (
@@ -157,7 +157,7 @@ const Euro = () => {
 					<RecoverData id='3' />
 					<RecoverData id='4' />
 					<RecoverData id='5' />
-					<RecoverData id='6' />
+					<RecoverData id='6' />  
 					<RecoverData id='7' />
 					<RecoverData id='8' />
 					<RecoverData id='9' />

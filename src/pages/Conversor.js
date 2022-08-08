@@ -19,7 +19,7 @@ const Conversor = () => {
 
 	const convert = async () => {
 		const importValue = document.querySelector('#import');
-		const dollarOptions = document.querySelector('#dollarOptions')
+		const dollarOptions = document.querySelector('#dollarOptions');
 
 		if (importValue.value === '') {
 			alert('Completá el formulario por favor');
@@ -29,43 +29,84 @@ const Conversor = () => {
 			const money1 = document.querySelector('#money1').selectedIndex;
 			const money2 = document.querySelector('#money2').selectedIndex;
 
-			const parseDataToNumber = async (data, operator, moneyType, placeType) => {
+			const parseDataToNumber = async (data, operator, moneyType, placeType, isEuro) => {
 				const res = await axios.get(
 					'https://www.dolarsi.com/api/api.php?type=valoresprincipales'
 				);
 
-				let converDataToNumber = res.data[data]['casa'][placeType].replaceAll(
-					',',
-					'.'
+				const resEuro = await axios.get(
+					'https://www.dolarsi.com/api/api.php?type=euro'
 				);
+				console.log(resEuro.data);
 
-				let dataConverted = parseFloat(converDataToNumber);
-
-				const importValue = document.querySelector('#import');
-				const convertBtn = document.querySelector('#convertBtn');
-
-				if (operator === 'dividedBy') {
-					convertBtn.innerText = 'Convirtiendo...';
-					const rta = importValue.value / dataConverted;
-				
-					document.querySelector('#rtas').innerHTML = `<div id="rta">${commify(
-						rta
-					)} <b>${moneyType}</b></div>`;
+				if (isEuro) {
+					let converDataToNumber = resEuro.data[data]['casa'][placeType].replaceAll(
+						',',
+						'.'
+					);
+	
+					let dataConverted = parseFloat(converDataToNumber);
+	
+					const importValue = document.querySelector('#import');
+					const convertBtn = document.querySelector('#convertBtn');
+	
+					if (operator === 'dividedBy') {
+						convertBtn.innerText = 'Convirtiendo...';
+						const rta = importValue.value / dataConverted;
 					
-					convertBtn.setAttribute('aria-busy', 'false');
-					convertBtn.innerText = 'Convertir';
-				}
-
-				if (operator === 'times') {
-					convertBtn.innerText = 'Convirtiendo...';
-					const rta = importValue.value * dataConverted;
-				
-					document.querySelector('#rtas').innerHTML = `<div id="rta">${commify(
-						rta
-					)} <b>${moneyType}</b></div>`;
+						document.querySelector('#rtas').innerHTML = `<div id="rta">${commify(
+							rta
+						)} <b>${moneyType}</b></div>`;
+						
+						convertBtn.setAttribute('aria-busy', 'false');
+						convertBtn.innerText = 'Convertir';
+					}
+	
+					if (operator === 'times') {
+						convertBtn.innerText = 'Convirtiendo...';
+						const rta = importValue.value * dataConverted;
 					
-					convertBtn.setAttribute('aria-busy', 'false');
-					convertBtn.innerText = 'Convertir';
+						document.querySelector('#rtas').innerHTML = `<div id="rta">${commify(
+							rta
+						)} <b>${moneyType}</b></div>`;
+						
+						convertBtn.setAttribute('aria-busy', 'false');
+						convertBtn.innerText = 'Convertir';
+					}
+				} else {
+					let converDataToNumber = res.data[data]['casa'][placeType].replaceAll(
+						',',
+						'.'
+					);
+	
+					let dataConverted = parseFloat(converDataToNumber);
+	
+					const importValue = document.querySelector('#import');
+					const convertBtn = document.querySelector('#convertBtn');
+	
+					if (operator === 'dividedBy') {
+						convertBtn.innerText = 'Convirtiendo...';
+						const rta = importValue.value / dataConverted;
+					
+						document.querySelector('#rtas').innerHTML = `<div id="rta">${commify(
+							rta
+						)} <b>${moneyType}</b></div>`;
+						
+						convertBtn.setAttribute('aria-busy', 'false');
+						convertBtn.innerText = 'Convertir';
+					}
+	
+					if (operator === 'times') {
+						convertBtn.innerText = 'Convirtiendo...';
+						const rta = importValue.value * dataConverted;
+					
+						document.querySelector('#rtas').innerHTML = `<div id="rta">${commify(
+							rta
+						)} <b>${moneyType}</b></div>`;
+						
+						convertBtn.setAttribute('aria-busy', 'false');
+						convertBtn.innerText = 'Convertir';
+					}
 				}
 			}
 
@@ -74,23 +115,23 @@ const Conversor = () => {
 				document.querySelector('#convertBtn').innerText = 'Convirtiendo...';
 				
 				if (dollarOptions.value === 'dolarOficial') {
-					parseDataToNumber(0, 'times', 'ARS', 'compra');
+					parseDataToNumber(0, 'times', 'ARS', 'compra', false);
 				}
 
 				if (dollarOptions.value === 'dolarBlue') {
-					parseDataToNumber(1, 'times', 'ARS', 'compra');
+					parseDataToNumber(1, 'times', 'ARS', 'compra', false);
 				}
 
 				if (dollarOptions.value === 'dolarBolsa') {
-					parseDataToNumber(4, 'times', 'ARS', 'compra');
+					parseDataToNumber(4, 'times', 'ARS', 'compra', false);
 				}
 
 				if (dollarOptions.value === 'dolarLiqui') {
-					parseDataToNumber(3, 'times', 'ARS', 'compra');
+					parseDataToNumber(3, 'times', 'ARS', 'compra', false);
 				}
 
 				if (dollarOptions.value === 'dolarTurista') {
-					parseDataToNumber(6, 'times', 'ARS', 'venta');
+					parseDataToNumber(6, 'times', 'ARS', 'venta', false);
 				}
 			}
 
@@ -99,24 +140,50 @@ const Conversor = () => {
 				convertBtn.innerText = 'Convirtiendo...';
 				
 				if (dollarOptions.value === 'dolarOficial') {
-					parseDataToNumber(0, 'dividedBy', 'USD', 'compra');
+					parseDataToNumber(0, 'dividedBy', 'USD', 'compra', false);
 				}
 
 				if (dollarOptions.value === 'dolarBlue') {
-					parseDataToNumber(1, 'dividedBy', 'USD', 'compra');
+					parseDataToNumber(1, 'dividedBy', 'USD', 'compra', false);
 				}
 
 				if (dollarOptions.value === 'dolarBolsa') {
-					parseDataToNumber(4, 'dividedBy', 'USD', 'compra');
+					parseDataToNumber(4, 'dividedBy', 'USD', 'compra', false);
 				}
 
 				if (dollarOptions.value === 'dolarLiqui') {
-					parseDataToNumber(3, 'dividedBy', 'USD', 'compra');
+					parseDataToNumber(3, 'dividedBy', 'USD', 'compra', false);
 				}
 
 				if (dollarOptions.value === 'dolarTurista') {
-					parseDataToNumber(6, 'dividedBy', 'USD', 'venta');
+					parseDataToNumber(6, 'dividedBy', 'USD', 'venta', false);
 				}
+			}
+
+			// Euro
+
+			if (money1 === 2 && money2 === 0) {
+				document.querySelector('#convertBtn').setAttribute('aria-busy', 'true');
+				document.querySelector('#convertBtn').innerText = 'Convirtiendo...';					
+				parseDataToNumber(11, 'times', 'ARS', 'compra', true);
+			}
+
+			if (money1 === 0 && money2 === 2) {
+				document.querySelector('#convertBtn').setAttribute('aria-busy', 'true');
+				document.querySelector('#convertBtn').innerText = 'Convirtiendo...';					
+				parseDataToNumber(11, 'dividedBy', 'ARS', 'compra', true);
+			}
+
+			if (money1 === 1 && money2 === 2) {
+				document.querySelector('#convertBtn').setAttribute('aria-busy', 'true');
+				document.querySelector('#convertBtn').innerText = 'Convirtiendo...';					
+				parseDataToNumber(11, 'dividedBy', 'EUR', 'compra', true);
+			}
+
+			if (money1 === 2 && money2 === 1) {
+				document.querySelector('#convertBtn').setAttribute('aria-busy', 'true');
+				document.querySelector('#convertBtn').innerText = 'Convirtiendo...';					
+				parseDataToNumber(11, 'dividedBy', 'EUR', 'compra', true);
 			}
 		}
 	};
@@ -136,6 +203,7 @@ const Conversor = () => {
 						<select id='money1'>
 							<option value='usd'>USD (Dólar Estadounidense)</option>
 							<option value='ars'>ARS (Peso Argentino)</option>
+							<option value='eur'>EUR (Euro del Banco Nación)</option>
 						</select>
 					</label>
 					
@@ -190,6 +258,7 @@ const Conversor = () => {
 						<select id='money2'>
 							<option value='ars'>ARS (Peso Argentino)</option>
 							<option value='usd'>USD (Dólar Estadounidense)</option>
+							<option value='eur'>EUR (Euro del Banco Nación)</option>
 						</select>
 					</label>
 				</form>
@@ -197,12 +266,12 @@ const Conversor = () => {
 				Moneda a usar
 					<label id='moneyOptions'>
 						<select name="" id="dollarOptions">
-						<option value="dolarOficial">Dolar Oficial</option>
-						<option value="dolarBlue">Dolar Blue</option>
-						<option value="dolarBolsa">Dolar Bolsa</option>
-						<option value="dolarLiqui">Dolar Liqui</option>
-						<option value="dolarTurista">Dolar Turista</option>
-					</select>
+							<option value="dolarOficial">Dolar Oficial</option>
+							<option value="dolarBlue">Dolar Blue</option>
+							<option value="dolarBolsa">Dolar Bolsa</option>
+							<option value="dolarLiqui">Dolar Liqui</option>
+							<option value="dolarTurista">Dolar Turista</option>
+						</select>
 					</label>
 					
 				<div id='center'>
