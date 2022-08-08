@@ -27,6 +27,11 @@ const OpenedMenu = () => {
 					<Link to='/conversor' onClick={() => closeDialog()}>
 						Conversor de Divisas
 					</Link>
+					<br />
+					<br />
+					<Link to='/euro' onClick={() => closeDialog()}>
+						Cotizaciones en Euro
+					</Link>
 				</article>
 			</dialog>
 		</>

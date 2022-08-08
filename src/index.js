@@ -1,28 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Conversor from './pages/Conversor';
-import './style.css'
-import OpenedMenu from './components/OpenedMenu'
+import Euro from './pages/Euro';
+import './style.css';
+import OpenedMenu from './components/OpenedMenu';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<BrowserRouter>
-    <OpenedMenu />
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/conversor" element={<Conversor />} />
-    </Routes>
-  </BrowserRouter>,
-)
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+		<OpenedMenu />
+		<Routes>
+			<Route path='/' element={<App />} />
+			<Route path='/conversor' element={<Conversor />} />
+			<Route path='/euro' element={<Euro />} />
+		</Routes>
+	</BrowserRouter>
+);

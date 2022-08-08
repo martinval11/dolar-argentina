@@ -1,88 +1,95 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light" class="htmlRoot">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="Martínval11" />
+		<meta
+			name="description"
+			content="Dolar Argentina es una página web en la que podrás mantenerte al dia con las ultimas actualizaciones del dolar de una forma facil y rápida, con una interfaz muy simple y agradable a la vista"
+		/>
+		<meta name="keywords" content="Precio Dolar, Dolar Argentina, Dolar Hoy" />
+		<title>Dólar Argentina | Cotización del dolar</title>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+		/>
+		<link rel="icon" type="image/svg+xml" href="img/money.webp" />
+		<link rel="stylesheet" href="./pico-master/css/pico.min.css" />
+		<link rel="canonical" href="https://dolar-argentina.netlify.app" />
+	</head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="robots" content="index" />
-	<meta name="author" content="Martínval11">
-	<meta name="description" content="Dolar Argentina es una página web en la que podrás mantenerte al dia con las ultimas actualizaciones del dolar de una forma facil y rápida, con una interfaz muy simple y agradable a la vista" />
-	<meta name="keywords" content="Precio Dolar - Dolar Argentina" />
-	<title>Dólar Argentina</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
-	<link rel="icon" type="image/svg+xml" href="img/money.webp" />
-	<link rel="stylesheet" href="./pico-master/css/pico.min.css" />
-	<link rel="canonical" href="https://dolar-argentina.netlify.app" />
-</head>
+	<body>
+		<div id="navFullContainer">
+			<img class="img-bg" src="img/dollarbg.webp" alt="Dollars" />
+			<nav class="container">
+				<ul>
+					<li>
+						<button id="openMenu">
+							<i class="bi bi-list"></i>
+						</button>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<strong>
+							<h1>Dólar Argentina</h1>
+						</strong>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<button id="darkMode" class="toggleLightMode">
+							<span id="text"><i class="bi bi-moon-stars-fill"></i></span>
+						</button>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<div id="root"></div>
 
-<body>
-	<div id='navFullContainer'>
-		<img
-    class="img-bg"
-    src="img/dollarbg.webp"
-    alt="Dollars"
-  >
-		<nav class='container'>
-			<ul>
-				<li>
-					<button id='openMenu'>
-						<i class='bi bi-list'></i>
-					</button>
-				</li>
-			</ul>
-			<ul>
-				<li>
-					<strong>
-						<h1>Dólar Argentina</h1>
-					</strong>
-				</li>
-			</ul>
-			<ul>
-				<li>
-					<button id='darkMode' class="toggleLightMode">
-						<span id='text'><i class="bi bi-moon-stars-fill"></i></span>
-					</button>
-				</li>
-			</ul>
-		</nav>
-	</div>
-	<div id="root"></div>
-	<noscript>
-		Necesitas tener JavaScript habilitado para usar esta web.
-	</noscript>
-	<script>
-		const openMenu = document.getElementById('openMenu').addEventListener('click', () => {
-			document.querySelector('.dialog').style.display = 'flex';
-		})
+		<noscript>
+			Necesitas tener JavaScript habilitado para usar esta web.
+		</noscript>
+		<script>
+			const openMenu = document
+				.querySelector('#openMenu')
+				.addEventListener('click', () => {
+					document.querySelector('.dialog').style.display = 'flex';
+				});
 
-		const toggleLightMode = document.querySelector('.toggleLightMode').addEventListener('click', () => {
+			const toggleLightMode = document
+				.querySelector('.toggleLightMode')
+				.addEventListener('click', () => {
+					const root = document.querySelector('.htmlRoot');
+					const getAttr = root.getAttribute('data-theme');
+
+					if (getAttr === 'light') {
+						root.setAttribute('data-theme', 'dark');
+						localStorage.setItem('darkTheme', true);
+						document.querySelector('#text').innerHTML =
+							'<i class="bi bi-brightness-high-fill"></i>';
+					} else {
+						root.setAttribute('data-theme', 'light');
+						localStorage.setItem('darkTheme', false);
+						document.querySelector('#text').innerHTML =
+							'<i class="bi bi-moon-stars-fill"></i>';
+					}
+				});
+
 			const root = document.querySelector('.htmlRoot');
-			const getAttr = root.getAttribute('data-theme');
-
-			if (getAttr === 'light') {
+			// Check if dark mode is enabled
+			if (localStorage.getItem('darkTheme') == 'true') {
 				root.setAttribute('data-theme', 'dark');
-				localStorage.setItem('darkTheme', true);
-				document.querySelector('#text').innerHTML = '<i class="bi bi-brightness-high-fill"></i>';
+				document.querySelector('#text').innerHTML =
+					'<i class="bi bi-brightness-high-fill"></i>';
 			} else {
 				root.setAttribute('data-theme', 'light');
-				localStorage.setItem('darkTheme', false);
-				document.querySelector('#text').innerHTML = '<i class="bi bi-moon-stars-fill"></i>';
+				document.querySelector('#text').innerHTML =
+					'<i class="bi bi-moon-stars-fill"></i>';
 			}
-		});
-
-		const root = document.querySelector('.htmlRoot');
-		// Check if dark mode is enabled
-		if (localStorage.getItem('darkTheme') == 'true') {
-			root.setAttribute('data-theme', 'dark');
-			document.querySelector('#text').innerHTML =
-				'<i class="bi bi-brightness-high-fill"></i>';
-		} else {
-			root.setAttribute('data-theme', 'light');
-			document.querySelector('#text').innerHTML =
-				'<i class="bi bi-moon-stars-fill"></i>';
-		}
-	</script>
-</body>
-
+		</script>
+	</body>
 </html>

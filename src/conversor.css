@@ -20,8 +20,13 @@ form {
 	text-align: inherit;
 }
 
+form img {
+	width: 19px;
+	margin-top: -4px;
+}
+
 form button {
-	width: min-content;
+	width: auto;
 	margin-top: 35px;
 }
 
@@ -54,6 +59,13 @@ form select {
 :root:not([data-theme=dark]) {
 	--rtaBg: #eaeaea;
 }
+
+@media screen and (min-width: 1250px) {
+	form button img {
+		width: 25px;
+	}
+}
+
 
 @media screen and (max-width: 1250px) {
 	form {

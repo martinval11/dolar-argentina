@@ -35,8 +35,7 @@ const App = () => {
 					name,
 					`<span id='neutral'>= ${dataConverted}%</span>`
 				);
-			} 
-			else {
+			} else {
 				localStorage.setItem(name, `<span id='red'>${dataConverted}%</span>`);
 			}
 		};
@@ -68,12 +67,12 @@ const App = () => {
 		getData();
 	}, []);
 
-	const SendData = (props, item) => {
+	const SendData = (props) => {
 		let data = localStorage.getItem(props.item);
 		return <span>{data}</span>;
 	};
 
-	const SendDataVariation = (props, item) => {
+	const SendDataVariation = (props) => {
 		let data = localStorage.getItem(props.item);
 		const content = data;
 		return <Markup content={content} />;
@@ -88,24 +87,60 @@ const App = () => {
 
 		updateList.setAttribute('aria-busy', 'true');
 		updateList.innerText = 'Actualizando Precios...';
-		
+
 		await getData();
-		
+
 		updateList.setAttribute('aria-busy', 'false');
 		updateList.innerText = 'Actualizar Precios';
-		updateList.setAttribute('data-tooltip', 'Los Precios han sido actualizados');
+		updateList.setAttribute(
+			'data-tooltip',
+			'Los Precios han sido actualizados'
+		);
 
 		setTimeout(() => {
 			updateList.removeAttribute('data-tooltip');
 		}, 3500);
-	}
+	};
+
+	const DollarRow = (props) => {
+		return (
+			<>
+				<tr>
+					<th scope='row'>{props.name}</th>
+					<td>
+						$<SendData item={props.purchase} />
+					</td>
+					<td>
+						$<SendData item={props.sale} />
+					</td>
+					<td>
+						<SendDataVariation item={props.variation} />
+					</td>
+				</tr>
+			</>
+		);
+	};
+
+	useEffect(() => {
+		if (localStorage.getItem('dolarBlueCompra') !== null) {
+			document.querySelector('#loading').style.display = 'none';
+		} else {
+			async function g() {
+				await getData()
+				document.querySelector('#loading').style.display = 'none'				
+			}
+			g()
+		}
+	}, []);
 
 	return (
 		<>
-			<br />
 			<main className='container'>
 				<button id='updateList' onClick={() => updateList()}>
 					Actualizar Precios
+				</button>
+				<button id='loading' aria-busy='true' className='secondary'>
+					Cargando, Espera por favor...
 				</button>
 			</main>
 
@@ -119,68 +154,39 @@ const App = () => {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th scope='row'>Dolar Blue</th>
-						<td>
-							$<SendData item='dolarBlueCompra' />
-						</td>
-						<td>
-							$<SendData item='dolarBlueVenta' />
-						</td>
-						<td>
-							<SendDataVariation item='dolarBlueVariacion' />
-						</td>
-					</tr>
-					<tr>
-						<th scope='row'>Dolar Oficial</th>
-						<td>
-							$<SendData item='dolarOficialCompra' />
-						</td>
-						<td>
-							$<SendData item='dolarOficialVenta' />
-						</td>
-						<td>
-							<SendDataVariation item='dolarOficialVariacion' />
-						</td>
-					</tr>
-					<tr>
-						<th scope='row'>Dolar Liqui</th>
-						<td>
-							$<SendData item='dolarLiquiCompra' />
-						</td>
-						<td>
-							$<SendData item='dolarLiquiVenta' />
-						</td>
-						<td>
-							<SendDataVariation item='dolarLiquiVariacion' />
-						</td>
-					</tr>
-					<tr>
-						<th scope='row'>Dolar Bolsa</th>
-						<td>
-							$<SendData item='dolarBolsaCompra' />
-						</td>
-						<td>
-							$<SendData item='dolarBolsaVenta' />
-						</td>
-						<td>
-							<SendDataVariation item='dolarBolsaVariacion' />
-						</td>
-					</tr>
-					<tr>
-						<th scope='row'>Dolar Turista</th>
-						<td>
-							<SendData item='dolarTuristaCompra' />
-						</td>
-						<td>
-							$<SendData item='dolarTuristaVenta' />
-						</td>
-						<td>
-							<SendDataVariation item='dolarTuristaVariacion' />
-						</td>
-					</tr>
+					<DollarRow
+						name='Dólar Blue'
+						purchase='dolarBlueCompra'
+						sale='dolarBlueVenta'
+						variation='dolarBlueVariacion'
+					/>
+					<DollarRow
+						name='Dólar Oficial'
+						purchase='dolarOficialCompra'
+						sale='dolarOficialVenta'
+						variation='dolarOficialVariacion'
+					/>
+					<DollarRow
+						name='Dólar Liqui'
+						purchase='dolarLiquiCompra'
+						sale='dolarLiquiVenta'
+						variation='dolarLiquiVariacion'
+					/>
+					<DollarRow
+						name='Dólar Bolsa'
+						purchase='dolarBolsaCompra'
+						sale='dolarBolsaVenta'
+						variation='dolarBolsaVariacion'
+					/>
+					<DollarRow
+						name='Dólar Turista'
+						purchase='dolarTuristaCompra'
+						sale='dolarTuristaVenta'
+						variation='dolarTuristaVariacion'
+					/>
 				</tbody>
 			</table>
+
 			<Footer position='absolute' />
 		</>
 	);
