@@ -1,13 +1,10 @@
-/* eslint-disable no-unused-vars */
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import React from 'react';
 import Footer from '../components/Footer';
-import '../euro.css';
+import '../css/euro.css';
 
 const Euro = () => {
-	const [euro, setEuros] = useState([]);
-
 	const getData = async () => {
 		const res = await axios.get(
 			'https://www.dolarsi.com/api/api.php?type=euro'
@@ -46,10 +43,10 @@ const Euro = () => {
 		}, 3500);
 	};
 
-	const RecoverData = (props) => {
-		const dataName = localStorage.getItem(`casaNombre${props.id}`);
-		const dataPurchase = localStorage.getItem(`casaCompra${props.id}`);
-		const dataSale = localStorage.getItem(`casaVenta${props.id}`);
+	const RecoverData = ({ id }) => {
+		const dataName = localStorage.getItem(`casaNombre${id}`);
+		const dataPurchase = localStorage.getItem(`casaCompra${id}`);
+		const dataSale = localStorage.getItem(`casaVenta${id}`);
 
 		if (localStorage.getItem('casaNombre0') !== null) {
 			if (dataPurchase !== 'No Cotiza' && dataSale !== 'No Cotiza') {
@@ -126,6 +123,12 @@ const Euro = () => {
 		}
 	}, []);
 
+	const numbers = [
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+		21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36
+	];
+	const listItems = numbers.map((numbers) => <RecoverData id={numbers} key={numbers} />);
+
 	return (
 		<>
 			<main className='container'>
@@ -150,45 +153,7 @@ const Euro = () => {
 						<th scope='col'>Venta</th>
 					</tr>
 				</thead>
-				<tbody>
-					<RecoverData id='0' />
-					<RecoverData id='1' />
-					<RecoverData id='2' />
-					<RecoverData id='3' />
-					<RecoverData id='4' />
-					<RecoverData id='5' />
-					<RecoverData id='6' />  
-					<RecoverData id='7' />
-					<RecoverData id='8' />
-					<RecoverData id='9' />
-					<RecoverData id='10' />
-					<RecoverData id='11' />
-					<RecoverData id='12' />
-					<RecoverData id='13' />
-					<RecoverData id='14' />
-					<RecoverData id='15' />
-					<RecoverData id='16' />
-					<RecoverData id='17' />
-					<RecoverData id='18' />
-					<RecoverData id='19' />
-					<RecoverData id='20' />
-					<RecoverData id='21' />
-					<RecoverData id='22' />
-					<RecoverData id='23' />
-					<RecoverData id='24' />
-					<RecoverData id='25' />
-					<RecoverData id='26' />
-					<RecoverData id='27' />
-					<RecoverData id='28' />
-					<RecoverData id='29' />
-					<RecoverData id='30' />
-					<RecoverData id='31' />
-					<RecoverData id='32' />
-					<RecoverData id='33' />
-					<RecoverData id='34' />
-					<RecoverData id='35' />
-					<RecoverData id='36' />
-				</tbody>
+				<tbody>{listItems}</tbody>
 			</table>
 
 			<Footer position='inherit' />
