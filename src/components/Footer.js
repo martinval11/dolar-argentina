@@ -1,10 +1,10 @@
-const Footer = (props) => {
+const Footer = ({ position }) => {
 	return (
 		<>
-			<footer style={{position: props.position}}>
+			<footer style={{position: position}}>
 				<small>
 					Todos los datos son extraidos de la API oficial de{' '}
-					<a href="https://www.dolarsi.com/" target="_blank" rel="noopener noreferrer">DolarSI</a>
+					<a href="https://www.dolarsi.com/" target="_blank" rel="noopener noreferrer nofollow">DolarSI</a>
 				</small>
 			</footer>
 		</>

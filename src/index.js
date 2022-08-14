@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Conversor from './pages/Conversor';
 import Euro from './pages/Euro';
-import './style.css';
+import './css/style.css';
 import OpenedMenu from './components/OpenedMenu';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

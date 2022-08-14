@@ -6,7 +6,7 @@ import React from 'react';
 import Footer from './components/Footer';
 
 const App = () => {
-	const [dollars, setDollars] = useState([]);
+	const [, setDollars] = useState([]);
 
 	const getData = async () => {
 		const res = await axios.get(
@@ -72,8 +72,8 @@ const App = () => {
 		return <span>{data}</span>;
 	};
 
-	const SendDataVariation = (props) => {
-		let data = localStorage.getItem(props.item);
+	const SendDataVariation = ({ item }) => {
+		let data = localStorage.getItem(item);
 		const content = data;
 		return <Markup content={content} />;
 	};
@@ -102,42 +102,44 @@ const App = () => {
 		}, 3500);
 	};
 
-	const DollarRow = (props) => {
-		return (
-			<>
-				<tr>
-					<th scope='row'>{props.name}</th>
-					<td>
-						$<SendData item={props.purchase} />
-					</td>
-					<td>
-						$<SendData item={props.sale} />
-					</td>
-					<td>
-						<SendDataVariation item={props.variation} />
-					</td>
-				</tr>
-			</>
-		);
-	};
+	const DollarRow = ({ name, purchase, sale, variation, isNumber }) => {
+		if (isNumber) {
+			return (
+				<>
+					<tr>
+						<th scope='row'>{name}</th>
+						<td>
+							$<SendData item={purchase} />
+						</td>
+						<td>
+							$<SendData item={sale} />
+						</td>
+						<td>
+							<SendDataVariation item={variation} />
+						</td>
+					</tr>
+				</>
+			);
+		}
 
-	const DollarRowNoPurchase = (props) => {
-		return (
-			<>
-				<tr>
-					<th scope='row'>{props.name}</th>
-					<td>
-						<SendData item={props.purchase} />
-					</td>
-					<td>
-						$<SendData item={props.sale} />
-					</td>
-					<td>
-						<SendDataVariation item={props.variation} />
-					</td>
-				</tr>
-			</>
-		);
+		if (!isNumber) {
+			return (
+				<>
+					<tr>
+						<th scope='row'>{name}</th>
+						<td>
+							<SendData item={purchase} />
+						</td>
+						<td>
+							$<SendData item={sale} />
+						</td>
+						<td>
+							<SendDataVariation item={variation} />
+						</td>
+					</tr>
+				</>
+			);
+		}
 	};
 
 	useEffect(() => {
@@ -145,10 +147,10 @@ const App = () => {
 			document.querySelector('#loading').style.display = 'none';
 		} else {
 			async function tryGetData() {
-				await getData()
-				document.querySelector('#loading').style.display = 'none'				
+				await getData();
+				document.querySelector('#loading').style.display = 'none';
 			}
-			tryGetData()
+			tryGetData();
 		}
 	}, []);
 
@@ -178,30 +180,35 @@ const App = () => {
 						purchase='dolarBlueCompra'
 						sale='dolarBlueVenta'
 						variation='dolarBlueVariacion'
+						isNumber={true}
 					/>
 					<DollarRow
 						name='Dólar Oficial'
 						purchase='dolarOficialCompra'
 						sale='dolarOficialVenta'
 						variation='dolarOficialVariacion'
+						isNumber={true}
 					/>
 					<DollarRow
 						name='Dólar Liqui'
 						purchase='dolarLiquiCompra'
 						sale='dolarLiquiVenta'
 						variation='dolarLiquiVariacion'
+						isNumber={true}
 					/>
 					<DollarRow
 						name='Dólar Bolsa'
 						purchase='dolarBolsaCompra'
 						sale='dolarBolsaVenta'
 						variation='dolarBolsaVariacion'
+						isNumber={true}
 					/>
-					<DollarRowNoPurchase
+					<DollarRow
 						name='Dólar Turista'
 						purchase='dolarTuristaCompra'
 						sale='dolarTuristaVenta'
 						variation='dolarTuristaVariacion'
+						isNumber={false}
 					/>
 				</tbody>
 			</table>
