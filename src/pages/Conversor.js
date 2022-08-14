@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 import Footer from '../components/Footer';
-import '../conversor.css';
+import '../css/conversor.css';
 
 const Conversor = () => {
 	const commify = (n) => {
