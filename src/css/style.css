@@ -9,6 +9,7 @@
 	--footerBg: #228b4a;
 	--primaryFg: #eaeaea;
 	--greenDollarHover: #27da5c;
+	--hoverBg: #eaeef1;
 }
 
 body {
@@ -89,11 +90,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-	background: var(--primary) !important;
-}
-
-tbody tr:hover th, tbody tr:hover td {
-	color: #fff;
+	background: var(--hoverBg) !important;
 }
 
 #red {
@@ -207,6 +204,8 @@ dialog article header a {
 	--primaryFg: #1095C1;
 	--greenDollarHover: #00ff4c;
 	--table-row-stripped-background-color: #16212b;
+	--hoverBg: #1e2b38;
+	--primary-hover: #0f83aa;
 }
 
 @media screen and (max-height: 577px) {
