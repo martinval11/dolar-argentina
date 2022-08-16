@@ -180,28 +180,28 @@ const App = () => {
 						purchase='dolarBlueCompra'
 						sale='dolarBlueVenta'
 						variation='dolarBlueVariacion'
-						isNumber={true}
+						isNumber
 					/>
 					<DollarRow
 						name='Dólar Oficial'
 						purchase='dolarOficialCompra'
 						sale='dolarOficialVenta'
 						variation='dolarOficialVariacion'
-						isNumber={true}
+						isNumber
 					/>
 					<DollarRow
 						name='Dólar Liqui'
 						purchase='dolarLiquiCompra'
 						sale='dolarLiquiVenta'
 						variation='dolarLiquiVariacion'
-						isNumber={true}
+						isNumber
 					/>
 					<DollarRow
 						name='Dólar Bolsa'
 						purchase='dolarBolsaCompra'
 						sale='dolarBolsaVenta'
 						variation='dolarBolsaVariacion'
-						isNumber={true}
+						isNumber
 					/>
 					<DollarRow
 						name='Dólar Turista'
