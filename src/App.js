@@ -86,12 +86,12 @@ const App = () => {
 		}
 
 		updateList.setAttribute('aria-busy', 'true');
-		updateList.innerText = 'Actualizando Precios...';
+		updateList.innerHTML = '<i class="bi bi-currency-exchange"></i> Actualizando Precios...';
 
 		await getData();
 
 		updateList.setAttribute('aria-busy', 'false');
-		updateList.innerText = 'Actualizar Precios';
+		updateList.innerHTML = '<i class="bi bi-currency-exchange"></i> Actualizar Precios';
 		updateList.setAttribute(
 			'data-tooltip',
 			'Los Precios han sido actualizados'
@@ -158,7 +158,7 @@ const App = () => {
 		<>
 			<main className='container'>
 				<button id='updateList' onClick={() => updateList()}>
-					Actualizar Precios
+					<i className="bi bi-currency-exchange"></i> Actualizar Precios
 				</button>
 				<button id='loading' aria-busy='true' className='secondary'>
 					Cargando, Espera por favor...
