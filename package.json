@@ -1,6 +1,7 @@
 {
   "name": "dolarargentina",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -12,8 +13,6 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "sass": "^1.54.0",
-    "sass-loader": "^13.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -39,5 +38,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.22.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.30.1"
   }
 }
