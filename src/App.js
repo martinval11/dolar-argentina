@@ -160,7 +160,7 @@ const App = () => {
 		<>
 			<main className='container'>
 				<button id='updateList' onClick={() => updateList()}>
-					<i className='bi bi-currency-exchange'></i> Actualizar Precios
+					<i className='bi bi-currency-exchange'></i>{' '}Actualizar Precios
 				</button>
 				<button id='loading' aria-busy='true' className='secondary'>
 					Cargando, Espera por favor...
