@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable */
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Markup } from 'interweave';
@@ -10,30 +10,30 @@ const App = () => {
 
 	const getData = async () => {
 		const res = await axios.get(
-			'https://www.dolarsi.com/api/api.php?type=valoresprincipales'
+			'https://www.dolarsi.com/api/api.php?type=valoresprincipales',
 		);
 
 		const addItem = (item, type, name) => {
-			let converDataToNumber = res.data[item]['casa'][type];
-			let dataConverted = converDataToNumber;
+			const converDataToNumber = res.data[item]['casa'][type];
+			const dataConverted = converDataToNumber;
 			localStorage.setItem(name, dataConverted);
 		};
 
 		const addItemVariation = (item, name) => {
-			let converDataToNumber = res.data[item]['casa']['variacion'].replaceAll(
+			const converDataToNumber = res.data[item]['casa']['variacion'].replaceAll(
 				',',
-				'.'
+				'.',
 			);
-			let dataConverted = parseFloat(converDataToNumber);
+			const dataConverted = parseFloat(converDataToNumber);
 			if (dataConverted > 0) {
 				localStorage.setItem(
 					name,
-					`<span id='green'>+${dataConverted}%</span>`
+					`<span id='green'>+${dataConverted}%</span>`,
 				);
 			} else if (dataConverted === 0) {
 				localStorage.setItem(
 					name,
-					`<span id='neutral'>= ${dataConverted}%</span>`
+					`<span id='neutral'>= ${dataConverted}%</span>`,
 				);
 			} else {
 				localStorage.setItem(name, `<span id='red'>${dataConverted}%</span>`);
@@ -67,13 +67,13 @@ const App = () => {
 		getData();
 	}, []);
 
-	const SendData = (props) => {
-		let data = localStorage.getItem(props.item);
+	const SendData = ({ item }) => {
+		const data = localStorage.getItem(item);
 		return <span>{data}</span>;
 	};
 
 	const SendDataVariation = ({ item }) => {
-		let data = localStorage.getItem(item);
+		const data = localStorage.getItem(item);
 		const content = data;
 		return <Markup content={content} />;
 	};
@@ -86,15 +86,17 @@ const App = () => {
 		}
 
 		updateList.setAttribute('aria-busy', 'true');
-		updateList.innerHTML = '<i class="bi bi-currency-exchange"></i> Actualizando Precios...';
+		updateList.innerHTML =
+			'<i class="bi bi-currency-exchange"></i> Actualizando Precios...';
 
 		await getData();
 
 		updateList.setAttribute('aria-busy', 'false');
-		updateList.innerHTML = '<i class="bi bi-currency-exchange"></i> Actualizar Precios';
+		updateList.innerHTML =
+			'<i class="bi bi-currency-exchange"></i> Actualizar Precios';
 		updateList.setAttribute(
 			'data-tooltip',
-			'Los Precios han sido actualizados'
+			'Los Precios han sido actualizados',
 		);
 
 		setTimeout(() => {
@@ -158,7 +160,7 @@ const App = () => {
 		<>
 			<main className='container'>
 				<button id='updateList' onClick={() => updateList()}>
-					<i className="bi bi-currency-exchange"></i> Actualizar Precios
+					<i className='bi bi-currency-exchange'></i> Actualizar Precios
 				</button>
 				<button id='loading' aria-busy='true' className='secondary'>
 					Cargando, Espera por favor...
