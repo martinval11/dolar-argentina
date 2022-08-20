@@ -9,9 +9,14 @@ const App = () => {
 	const [, setDollars] = useState([]);
 
 	const getData = async () => {
-		const res = await axios.get(
-			'https://www.dolarsi.com/api/api.php?type=valoresprincipales',
-		);
+		const res = await axios
+			.get('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
+			.catch(() => {
+				document.querySelector('#error').style.display = 'inherit';
+				setTimeout(() => {
+					document.querySelector('#error').style.display = 'none';
+				}, 4300);
+			});
 
 		const addItem = (item, type, name) => {
 			const converDataToNumber = res.data[item]['casa'][type];
@@ -22,18 +27,18 @@ const App = () => {
 		const addItemVariation = (item, name) => {
 			const converDataToNumber = res.data[item]['casa']['variacion'].replaceAll(
 				',',
-				'.',
+				'.'
 			);
 			const dataConverted = parseFloat(converDataToNumber);
 			if (dataConverted > 0) {
 				localStorage.setItem(
 					name,
-					`<span id='green'>+${dataConverted}%</span>`,
+					`<span id='green'>+${dataConverted}%</span>`
 				);
 			} else if (dataConverted === 0) {
 				localStorage.setItem(
 					name,
-					`<span id='neutral'>= ${dataConverted}%</span>`,
+					`<span id='neutral'>= ${dataConverted}%</span>`
 				);
 			} else {
 				localStorage.setItem(name, `<span id='red'>${dataConverted}%</span>`);
@@ -89,19 +94,26 @@ const App = () => {
 		updateList.innerHTML =
 			'<i class="bi bi-currency-exchange"></i> Actualizando Precios...';
 
-		await getData();
+		await getData()
+			.then(() => {
+				updateList.setAttribute('aria-busy', 'false');
+				updateList.innerHTML =
+					'<i class="bi bi-currency-exchange"></i> Actualizar Precios';
+				updateList.setAttribute(
+					'data-tooltip',
+					'Los Precios han sido actualizados'
+				);
 
-		updateList.setAttribute('aria-busy', 'false');
-		updateList.innerHTML =
-			'<i class="bi bi-currency-exchange"></i> Actualizar Precios';
-		updateList.setAttribute(
-			'data-tooltip',
-			'Los Precios han sido actualizados',
-		);
-
-		setTimeout(() => {
-			updateList.removeAttribute('data-tooltip');
-		}, 3500);
+				setTimeout(() => {
+					updateList.removeAttribute('data-tooltip');
+				}, 3500);
+			})
+			.catch(() => {
+				updateList.innerHTML =
+					'<i class="bi bi-currency-exchange"></i> Actualizar Precios';
+					updateList.removeAttribute('data-tooltip');
+					updateList.setAttribute('aria-busy', 'false');
+			});
 	};
 
 	const DollarRow = ({ name, purchase, sale, variation, isNumber }) => {
@@ -160,10 +172,13 @@ const App = () => {
 		<>
 			<main className='container'>
 				<button id='updateList' onClick={() => updateList()}>
-					<i className='bi bi-currency-exchange'></i>{' '}Actualizar Precios
+					<i className='bi bi-currency-exchange'></i> Actualizar Precios
 				</button>
 				<button id='loading' aria-busy='true' className='secondary'>
 					Cargando, Espera por favor...
+				</button>
+				<button id='error' className='primary'>
+					<i className='bi bi-x-lg'></i> No se pudo actualizar los precios
 				</button>
 			</main>
 

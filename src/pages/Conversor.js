@@ -33,14 +33,23 @@ const Conversor = () => {
 				placeType,
 				isEuro
 			) => {
-				const res = await axios.get(
-					'https://www.dolarsi.com/api/api.php?type=valoresprincipales'
-				);
+				const error = () => {
+					const convertBtn = document.querySelector('#convertBtn');
+					convertBtn.innerText = 'Convertir';
+					convertBtn.removeAttribute('aria-busy');
+					document.querySelector('#error').style.display = 'inherit';
+					setTimeout(() => {
+						document.querySelector('#error').style.display = 'none';
+					}, 4300);
+				};
 
-				const resEuro = await axios.get(
-					'https://www.dolarsi.com/api/api.php?type=euro'
-				);
-				console.log(resEuro.data);
+				const res = await axios
+					.get('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
+					.catch(() => error());
+
+				const resEuro = await axios
+					.get('https://www.dolarsi.com/api/api.php?type=euro')
+					.catch(() => error());
 
 				if (isEuro) {
 					let converDataToNumber = resEuro.data[data]['casa'][
@@ -298,11 +307,11 @@ const Conversor = () => {
 				Moneda a usar
 				<label id='moneyOptions'>
 					<select id='dollarOptions'>
-						<option value='dolarOficial'>Dolar Oficial</option>
-						<option value='dolarBlue'>Dolar Blue</option>
-						<option value='dolarBolsa'>Dolar Bolsa</option>
-						<option value='dolarLiqui'>Dolar Liqui</option>
-						<option value='dolarTurista'>Dolar Turista</option>
+						<option value='dolarOficial'>Dólar Oficial</option>
+						<option value='dolarBlue'>Dólar Blue</option>
+						<option value='dolarBolsa'>Dólar Bolsa</option>
+						<option value='dolarLiqui'>Dólar Liqui</option>
+						<option value='dolarTurista'>Dólar Turista</option>
 					</select>
 				</label>
 				<div id='center'>
@@ -310,11 +319,14 @@ const Conversor = () => {
 						Convertir
 					</button>
 				</div>
+				<button id='error' className='primary'>
+					<i className='bi bi-x-lg'></i> No se pudo actualizar los precios
+				</button>
 				<div id='rtas'></div>
 				<br />
 			</main>
 
-			<Footer position='absolute' />
+			<Footer position='initial' />
 		</>
 	);
 };

@@ -105,6 +105,13 @@ tbody tr:hover {
 	color: var(--neutralColor);
 }
 
+#error {
+	display: none;
+	background: #e43737;
+	border-color: #e43737;
+	pointer-events: none;
+}
+
 tbody tr:hover #green {
 	color: var(--greenDollarHover);
 }
