@@ -314,7 +314,7 @@ const Conversor = () => {
 				<br />
 			</main>
 
-			<Footer position='initial' />
+			<Footer position='absolute' />
 		</>
 	);
 };
