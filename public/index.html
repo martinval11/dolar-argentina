@@ -120,7 +120,7 @@
 
 			// Service Worker
 			if ('serviceWorker' in navigator) {
-				window.addEventListener('DOMContentLoaded', () => {
+				document.addEventListener('DOMContentLoaded', () => {
 					navigator.serviceWorker.register('serviceWorker.js').then(
 						(registration) => {
 							// Registration was successful
