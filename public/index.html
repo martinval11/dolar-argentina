@@ -118,9 +118,9 @@
 					"<i class='bi bi-moon-stars-fill'></i>";
 			}
 
-			/* Service Worker
+			// Service Worker
 			if ('serviceWorker' in navigator) {
-				window.addEventListener('load', () => {
+				window.addEventListener('DOMContentLoaded', () => {
 					navigator.serviceWorker.register('serviceWorker.js').then(
 						(registration) => {
 							// Registration was successful
@@ -135,7 +135,7 @@
 						}
 					);
 				});
-			}*/
+			}
 		</script>
 	</body>
 </html>
