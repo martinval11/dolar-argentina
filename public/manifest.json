@@ -1,8 +1,7 @@
 {
-	"name": "Dólar Argentina",
-	"short_name": "Dólar Argentina",
-	"start_url": ".",
-	"icons": [
+  "short_name": "Dólar Argentina",
+  "name": "Dólar Argentina",
+  "icons": [
 		{
 			"src": "img/maskable/maskable_icon_x128.png",
 			"sizes": "128x128",
@@ -28,7 +27,8 @@
 			"purpose": "maskable"
 		}
 	],
-	"background_color": "#eaeaea",
-	"display": "standalone",
-	"theme_color": "#eaeaea"
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#eaeaea",
+  "background_color": "#eaeaea"
 }
