@@ -65,6 +65,9 @@ const App = () => {
 		addItem(6, 'venta', 'dolarTuristaVenta');
 		addItemVariation(6, 'dolarTuristaVariacion');
 
+		addItem(7, 'compra', 'dolarPromedioCompra');
+		addItem(7, 'venta', 'dolarPromedioVenta');
+
 		setDollars(res.data);
 	};
 
@@ -111,12 +114,31 @@ const App = () => {
 			.catch(() => {
 				updateList.innerHTML =
 					'<i class="bi bi-currency-exchange"></i> Actualizar Precios';
-					updateList.removeAttribute('data-tooltip');
-					updateList.setAttribute('aria-busy', 'false');
+				updateList.removeAttribute('data-tooltip');
+				updateList.setAttribute('aria-busy', 'false');
 			});
 	};
 
-	const DollarRow = ({ name, purchase, sale, variation, isNumber }) => {
+	const DollarRow = ({ name, purchase, sale, variation, isNumber, hasNotVariation }) => {
+		if (hasNotVariation) {
+			return (
+				<>
+					<tr>
+						<th scope='row'>{name}</th>
+						<td>
+							$<SendData item={purchase} />
+						</td>
+						<td>
+							$<SendData item={sale} />
+						</td>
+						<td id='neutral'>
+							No tiene
+						</td>
+					</tr>
+				</>
+			);
+		}
+
 		if (isNumber) {
 			return (
 				<>
@@ -207,6 +229,14 @@ const App = () => {
 						isNumber
 					/>
 					<DollarRow
+						name='Dólar Promedio'
+						purchase='dolarPromedioCompra'
+						sale='dolarPromedioVenta'
+						variation=''
+						hasNotVariation
+						isNumber
+					/>
+					<DollarRow
 						name='Dólar Liqui'
 						purchase='dolarLiquiCompra'
 						sale='dolarLiquiVenta'
@@ -230,7 +260,7 @@ const App = () => {
 				</tbody>
 			</table>
 
-			<Footer position='absolute' />
+			<Footer position='' />
 		</>
 	);
 };

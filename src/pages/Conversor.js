@@ -230,11 +230,11 @@ const Conversor = () => {
 				<form>
 					<label>
 						<span>Ingrese Importe</span>
-						<input type='number' id='import' />
+						<input type='number' id='import' min='1' placeholder='Ej: 1' />
 					</label>
 
 					<label>
-						<span>Seleccione Divisa</span>
+						<span>Seleccione Divisa 1</span>
 						<select id='money1'>
 							<option value='usd'>USD (Dólar Estadounidense)</option>
 							<option value='ars'>ARS (Peso Argentino)</option>
@@ -296,7 +296,7 @@ const Conversor = () => {
 					</button>
 
 					<label>
-						<span>Seleccione Divisa</span>
+						<span>Seleccione Divisa 2</span>
 						<select id='money2'>
 							<option value='ars'>ARS (Peso Argentino)</option>
 							<option value='usd'>USD (Dólar Estadounidense)</option>

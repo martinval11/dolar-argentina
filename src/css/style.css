@@ -239,11 +239,13 @@ dialog article header a {
 	}
 }
 
-@media screen and (max-height: 490px) {
+@media screen and (max-height: 590px) {
 	footer {
 		bottom: -180px;
+		position: inherit !important;
 	}
 }
+
 
 @media screen and (max-width: 750px) {
 	nav {
@@ -253,5 +255,25 @@ dialog article header a {
 	nav h1 {
 		font-size: 27px;
 		vertical-align: middle;
+	}
+}
+
+@media screen and (max-width: 1111px) {
+	footer {
+		position: absolute;
+	}
+}
+
+@media screen and (max-width: 400px) and (max-height: 700px) {
+	footer {
+		position: inherit !important;
+		margin-top: 35px;
+	}
+}
+
+@media screen and (max-width: 400px) and (max-height: 900px) {
+	footer {
+		position: absolute;
+		margin-top: 35px;
 	}
 }

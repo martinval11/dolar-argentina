@@ -15,17 +15,17 @@ const OpenedMenu = () => {
 						</button>
 						<span id='title'>Menu</span>
 					</header>
-					<Link to='/' onClick={() => closeDialog()} rel='follow'>
+					<Link to='/' onClick={() => closeDialog()} rel='follow' title='Inicio'>
 						Inicio
 					</Link>
 					<br />
 					<br />
-					<Link to='/conversor' onClick={() => closeDialog()} rel='follow'>
+					<Link to='/conversor' onClick={() => closeDialog()} rel='follow' title='Conversor de Divisas'>
 						Conversor de Divisas
 					</Link>
 					<br />
 					<br />
-					<Link to='/euro' onClick={() => closeDialog()} rel='follow'>
+					<Link to='/euro' onClick={() => closeDialog()} rel='follow' title='Cotizaciones en Euro'>
 						Cotizaciones en Euro
 					</Link>
 				</article>

@@ -1,58 +1,60 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light" class="htmlRoot">
+<html lang='en' data-theme='light' class='htmlRoot'>
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="theme-color" content="#228B4A">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="robots" content="index, follow" />
-		<meta name="author" content="Martínval11" />
+		<meta charset='UTF-8' />
+		<meta name='theme-color' content='#228B4A'>
+		<meta http-equiv='X-UA-Compatible' content='ie=edge' />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+		<meta name='robots' content='index, follow' />
+		<meta name='author' content='Martínval11' />
 		<meta
-			name="description"
-			content="Dólar Argentina es una página web en la que podrás mantenerte al dia con las últimas actualizaciones del dolar de una forma facil y rápida, con una interfaz muy simple y agradable a la vista"
+			name='description'
+			content='Dólar Argentina es una página web en la que podrás mantenerte al dia con las últimas actualizaciones del dolar de una forma facil y rápida, con una interfaz muy simple y agradable a la vista'
 		/>
 		<meta
-			name="google-site-verification"
-			content="VXVbJtfQbk0IfXK_zDS34jAgNqI_Lmj1MeEdiaR8dMw"
+			name='google-site-verification'
+			content='VXVbJtfQbk0IfXK_zDS34jAgNqI_Lmj1MeEdiaR8dMw'
 		/>
-		<meta name="keywords" content="Precio Dolar, Dolar Argentina, Dolar Hoy" />
+		<meta name='keywords' content='Precio Dolar, Dolar Argentina, Dolar Hoy' />
 		<meta
-			property="og:image"
-			content="https://dolar-argentina.netlify.app/img/money.webp"
+			property='og:image'
+			content='https://dolar-argentina.netlify.app/img/money.webp'
 		/>
-		<meta property="og:image:type" content="image/webp" />
-		<meta property="og:image:alt" content="Logo de Dólar Argentina" />
-		<meta property="og:image:width" content="512" />
-		<meta property="og:image:height" content="512" />
+		<meta property='og:image:type' content='image/webp' />
+		<meta property='og:image:alt' content='Logo de Dólar Argentina' />
+		<meta property='og:image:width' content='512' />
+		<meta property='og:image:height' content='512' />
 		<meta
-			property="og:title"
-			content="Dólar Argentina | Cotización del dolar"
+			property='og:title'
+			content='Dólar Argentina | Cotización del dolar'
 		/>
 		<meta
-			property="og:description"
-			content="Dólar Argentina es una página web en la que podrás mantenerte al dia con las últimas actualizaciones del dolar de una forma facil y rápida, con una interfaz muy simple y agradable a la vista"
+			property='og:description'
+			content='Dólar Argentina es una página web en la que podrás mantenerte al dia con las últimas actualizaciones del dolar de una forma facil y rápida, con una interfaz muy simple y agradable a la vista'
 		/>
-		<meta property="og:url" content="https://dolar-argentina.netlify.app" />
+		<meta property='og:url' content='https://dolar-argentina.netlify.app' />
+		
 		<title>Dólar Argentina | Cotización del dolar</title>
+		
 		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+			rel='stylesheet'
+			href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css'
 		/>
-		<link rel="icon" type="image/webp" href="img/money.webp" />
-		<link rel="apple-touch-icon" href="img/money.webp" />
-		<link rel="stylesheet" href="%PUBLIC_URL%/pico-master/css/pico.min.css" />
-		<link rel="canonical" href="https://dolar-argentina.netlify.app" />
-		<link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+		<link rel='icon' type='image/webp' href='img/money.webp' />
+		<link rel='apple-touch-icon' href='img/money.webp' />
+		<link rel='stylesheet' href='%PUBLIC_URL%/pico-master/css/pico.min.css' />
+		<link rel='canonical' href='https://dolar-argentina.netlify.app' />
+		<link rel='manifest' href='%PUBLIC_URL%/manifest.json' />
 	</head>
 
-	<body translate="no">
-		<div id="navFullContainer">
-			<img class="img-bg" src="img/dollarbg.webp" alt="Dollars" />
-			<nav class="container">
+	<body translate='no'>
+		<div id='navFullContainer'>
+			<img class='img-bg' src='img/dollarbg.webp' alt='Imagen Dolares' title='Dólar Argentina' />
+			<nav class='container'>
 				<ul>
 					<li>
-						<button id="openMenu">
-							<i class="bi bi-list"></i>
+						<button id='openMenu'>
+							<i class='bi bi-list'></i>
 						</button>
 					</li>
 				</ul>
@@ -65,18 +67,19 @@
 				</ul>
 				<ul>
 					<li>
-						<button id="darkMode" class="toggleLightMode">
-							<span id="text"><i class="bi bi-moon-stars-fill"></i></span>
+						<button id='darkMode' class='toggleLightMode'>
+							<span id='text'><i class='bi bi-moon-stars-fill'></i></span>
 						</button>
 					</li>
 				</ul>
 			</nav>
 		</div>
-		<div id="root"></div>
+		<div id='root'></div>
 
 		<noscript>
 			Necesitas tener JavaScript habilitado para usar esta web.
 		</noscript>
+		
 		<script>
 			const openMenu = document
 				.querySelector('#openMenu')
@@ -94,12 +97,12 @@
 						root.setAttribute('data-theme', 'dark');
 						localStorage.setItem('darkTheme', true);
 						document.querySelector('#text').innerHTML =
-							'<i class="bi bi-brightness-high-fill"></i>';
+							"<i class='bi bi-brightness-high-fill'></i>";
 					} else {
 						root.setAttribute('data-theme', 'light');
 						localStorage.setItem('darkTheme', false);
 						document.querySelector('#text').innerHTML =
-							'<i class="bi bi-moon-stars-fill"></i>';
+							"<i class='bi bi-moon-stars-fill'></i>";
 					}
 				});
 
@@ -108,18 +111,18 @@
 			if (localStorage.getItem('darkTheme') == 'true') {
 				root.setAttribute('data-theme', 'dark');
 				document.querySelector('#text').innerHTML =
-					'<i class="bi bi-brightness-high-fill"></i>';
+					"<i class='bi bi-brightness-high-fill'></i>";
 			} else {
 				root.setAttribute('data-theme', 'light');
 				document.querySelector('#text').innerHTML =
-					'<i class="bi bi-moon-stars-fill"></i>';
+					"<i class='bi bi-moon-stars-fill'></i>";
 			}
 
 			// Service Worker
 			if ('serviceWorker' in navigator) {
 				window.addEventListener('load', () => {
 					navigator.serviceWorker.register('serviceWorker.js').then(
-						function (registration) {
+						(registration) => {
 							// Registration was successful
 							console.log(
 								'ServiceWorker registration successful with scope: ',
