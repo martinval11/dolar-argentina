@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html
+	lang="es"
+	data-theme="light">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="theme-color"
+			content="#228B4A" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="robots"
+			content="index, follow" />
+		<meta
+			name="author"
+			content="Martínval11" />
+		<meta
+			name="description"
+			content="Dólar Argentina es una página web en la que podrás mantenerte al dia con las últimas actualizaciones del dolar de una forma facil y rápida, con una interfaz muy simple y agradable a la vista" />
+		<meta
+			name="keywords"
+			content="Precio Dolar, Dolar Argentina, Dolar Hoy" />
+		<meta
+			property="og:image"
+			content="https://dolar-argentina.netlify.app/img/money.webp" />
+		<meta
+			property="og:image:type"
+			content="image/webp" />
+		<meta
+			property="og:image:alt"
+			content="Logo de Dólar Argentina" />
+		<meta
+			property="og:image:width"
+			content="512" />
+		<meta
+			property="og:image:height"
+			content="512" />
+		<meta
+			property="og:title"
+			content="Dólar Argentina | Cotización del dolar" />
+		<meta
+			property="og:description"
+			content="Dólar Argentina es una página web en la que podrás mantenerte al dia con las últimas actualizaciones del dolar de una forma facil y rápida, con una interfaz muy simple y agradable a la vista" />
+		<meta
+			property="og:url"
+			content="https://dolar-argentina.netlify.app" />
+
+		<title>Dólar Argentina | Cotización del dolar</title>
+		<link
+			rel="icon"
+			type="image/webp"
+			href="img/money.webp" />
+		<link
+			rel="stylesheet"
+			href="./pico.min.css" />
+		<link
+			rel="canonical"
+			href="https://dolar-argentina.netlify.app" />
+	</head>
+	<body translate="no">
+		<div id="root"></div>
+
+		<noscript>
+			Necesitas tener JavaScript habilitado para usar esta web.
+		</noscript>
+
+		<script
+			type="module"
+			src="/src/main.tsx"></script>
+
+		<script>
+			const rootTag = document.querySelector('html');
+			const theme = localStorage.getItem('theme');
+			if (theme === 'light') {
+				rootTag.setAttribute('data-theme', 'light');
+			}
+
+			if (theme === 'dark') {
+				rootTag.setAttribute('data-theme', 'dark');
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,81 @@
+:root {
+	--rtaBg: #141E26;
+}
+
+.conversor {
+	display: flex;
+	align-items: center;
+	margin-bottom: 2rem;
+	margin-top: .85rem;
+}
+
+.conversor img {
+	width: 19px;
+	margin-top: -4px;
+}
+
+.conversor button {
+	width: auto;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.conversor select {
+	width: min-content;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+}
+
+.center button {
+	width: 230px;
+}
+
+.moneyOptions {
+	display: flex;
+	justify-content: center;
+}
+
+.moneyOptions span {
+	display: flex;
+}
+
+.moneyOptions select, .convertButton {
+	width: 50% !important;
+}
+
+.rta {
+	font-size: 45px;
+	box-shadow: none;
+	border-radius: 3px;
+	padding: 10px;
+	background: var(--rtaBg);
+}
+
+[data-theme=light],
+:root:not([data-theme=dark]) {
+	--rtaBg: #eaeaea;
+}
+
+@media screen and (max-width: 1250px) {
+	.conversor {
+		flex-direction: column;
+	}
+
+	.conversor label {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.conversor label, select, .moneyOptions select {
+		width: 100% !important;
+	}
+
+	.invertValuesButton {
+		margin-bottom: 14px !important;
+	}
+}

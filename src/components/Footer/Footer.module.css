@@ -1,0 +1,18 @@
+.footerContainer {
+	position: relative;
+	bottom: -75px;
+}
+
+.footer {
+	position: absolute;
+	padding: 20px;
+	background: var(--footerBg);
+	color: #fff;
+	bottom: 0;
+	width: 100%;
+}
+
+.link {
+	color: var(--primaryFg);
+	font-weight: 600;
+}

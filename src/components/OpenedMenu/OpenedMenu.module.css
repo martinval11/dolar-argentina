@@ -1,0 +1,51 @@
+.dialog {
+	display: none;
+}
+
+.dialogTitle {
+	color: var(--headerFgColor);
+}
+
+.dialog article {
+	width: 100%;
+	max-width: 400px;
+	min-width: 350px;
+	margin: 0;
+}
+
+.dialog article a {
+	padding: 10px;
+	border-radius: 3px;
+	width: 100%;
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+.dialog article a:last-child {
+	margin-bottom: 0;
+}
+
+.dialog article a:hover {
+	background: var(--primary-hover);
+	color: var(--h1-color);
+	text-decoration: none;
+}
+
+.dialogHeader {
+	background: var(--dialogBg);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: transparent;
+	height: 65px;
+	margin-bottom: 25px;
+	padding: 1rem;
+}
+
+.dialogHeader button {
+	padding: 10px;
+	display: flex;
+  color: #fff;
+	width: min-content;
+	margin: 0;
+}
