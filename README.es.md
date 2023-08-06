@@ -1,6 +1,6 @@
 # Dólar Argentina
-[&#x1f1fa;&#x1f1f8; Inglés](README.md)
-[&#x1f1ea;&#x1f1f8; Español](README.es.md)
+[🇺🇸 Inglés](README.md)
+[🇪🇸 Español](README.es.md)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c51eb455-8cac-4bd6-968b-f05ab5f9dd27/deploy-status)](https://app.netlify.com/sites/dolar-argentina/deploys)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -11,10 +11,11 @@ Ver los precios del dólar en Argentina
 
 ## Índice
 
-- [Setup](#setup)
+- [Preparando](#preparando)
 - [Scripts](#scripts)
-- [Features](#features)
-- [Technologies](#technologies)
+- [Tecnologías Usadas](#tecnologías-usadas)
+- [Licencia](#licencia)
+- [Contacto](#contacto)
 
 ## Preparando
 

@@ -1,6 +1,6 @@
 # Dólar Argentina
-[English](README.md)
-[Spanish](README.es.md)
+[🇺🇸 English](README.md)
+[🇪🇸 Spanish](README.es.md)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c51eb455-8cac-4bd6-968b-f05ab5f9dd27/deploy-status)](https://app.netlify.com/sites/dolar-argentina/deploys)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -13,8 +13,9 @@ View Dollar Prices in Argentina.
 
 - [Setup](#setup)
 - [Scripts](#scripts)
-- [Features](#features)
 - [Technologies](#technologies)
+- [License](#license)
+- [Contact](#contact)
 
 ## Setup
 
