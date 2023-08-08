@@ -14,7 +14,8 @@ import Footer from './components/Footer/Footer';
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<BrowserRouter>
-			<Nav />
+		<div className="wrapper">
+		<Nav />
 			<OpenedMenu />
 			<Routes>
 				<Route
@@ -30,6 +31,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 					element={<Euro />}
 				/>
 			</Routes>
+		</div>
 			<Footer />
 		</BrowserRouter>
 	</React.StrictMode>

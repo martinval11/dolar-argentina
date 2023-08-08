@@ -46,30 +46,28 @@ const App = () => {
 	}, []);
 
 	return (
-		<>
-			<main className='container'>
-				<button
-					id='updateList'
-					onClick={updateList}
-					data-cy='updatePrices'>
-					<CurrencyExchange /> {updatePricesText}
-				</button>
-				{error ? (
-					<div
-						id='error'
-						className='primary'>
-						No se pudo actualizar los precios
-					</div>
-				) : null}
-				{loading ? (
-					<div
-						id='loading'
-						aria-busy='true'
-						className='secondary'>
-						Cargando, Espera por favor...
-					</div>
-				) : null}
-			</main>
+		<main className='container'>
+			<button
+				id='updateList'
+				onClick={updateList}
+				data-cy='updatePrices'>
+				<CurrencyExchange /> {updatePricesText}
+			</button>
+			{error ? (
+				<div
+					id='error'
+					className='primary'>
+					No se pudo actualizar los precios
+				</div>
+			) : null}
+			{loading ? (
+				<div
+					id='loading'
+					aria-busy='true'
+					className='secondary'>
+					Cargando, Espera por favor...
+				</div>
+			) : null}
 
 			<table
 				role='grid'
@@ -97,22 +95,25 @@ const App = () => {
 								<td>${data.casa.venta}</td>
 							)}
 							<td>
-								<span
-									id={
-										data.casa.variacion > '0'
-											? 'green'
-											: null || data.casa.variacion < '0'
-											? 'red'
-											: 'neutral'
-									}>
-									{data.casa.variacion ?? '-'}
-								</span>
+								{data.casa.variacion > '0' ? (
+									<span id='green'>+{data.casa.variacion}</span>
+								) : null}
+
+								{data.casa.variacion < '0' ? (
+									<span id='red'>{data.casa.variacion}</span>
+								) : null}
+
+								{!data.casa.variacion ? (
+									<span id='neutral'>-</span>
+								) : null || data.casa.variacion === '0' ? (
+									<span id='neutral'>{data.casa.variacion}</span>
+								) : null}
 							</td>
 						</tr>
 					))}
 				</tbody>
 			</table>
-		</>
+		</main>
 	);
 };
 

@@ -20,6 +20,12 @@ body {
 	background: var(--bg);
 }
 
+.wrapper {
+	min-height: 92dvh;
+	min-height: 92vh;
+	box-sizing: border-box;
+}
+
 #mainContainer {
 	display: flex;
 }
@@ -99,4 +105,10 @@ tbody tr:hover #green {
 	--table-row-stripped-background-color: #16212b;
 	--hoverBg: #1e2b38;
 	--primary-hover: #0f83aa;
+}
+
+@media screen and (max-width: 420px) {
+	th {
+		padding: .5rem;
+	}
 }

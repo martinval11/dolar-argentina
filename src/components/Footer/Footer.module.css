@@ -1,15 +1,12 @@
-.footerContainer {
-	position: relative;
-	bottom: -75px;
-}
-
 .footer {
-	position: absolute;
-	padding: 20px;
+	position: relative;
 	background: var(--footerBg);
 	color: #fff;
 	bottom: 0;
-	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 8vh;
 }
 
 .link {
