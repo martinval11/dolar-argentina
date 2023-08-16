@@ -43,6 +43,7 @@ const App = () => {
 
 	useEffect(() => {
 		getData();
+		console.log(data);
 	}, []);
 
 	return (
@@ -90,9 +91,12 @@ const App = () => {
 								<td>${data.casa.compra}</td>
 							)}
 							{data.casa.venta === 'No Cotiza' ? (
-								<td>{data.casa.venta}</td>
+								<td>{data.casa.venta.toString()}</td>
+							) : <td>${data.casa.venta.toString()}</td> &&
+							  typeof data.casa.venta === 'object' ? (
+								<td>-</td>
 							) : (
-								<td>${data.casa.venta}</td>
+								<td>${data.casa.venta.toString()}</td>
 							)}
 							<td>
 								{data.casa.variacion > '0' ? (
